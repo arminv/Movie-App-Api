@@ -10,7 +10,7 @@ import org.springframework.data.annotation.Id;
 import java.time.LocalDateTime;
 
 /**
- * A movie for a {@link User}.
+ * A movie saved by a {@link User}.
  */
 @Data
 @AllArgsConstructor
@@ -30,7 +30,7 @@ public class Movie {
     private String name;
 
     /**
-     * ID of user who liked this movie
+     * ID of user who saved this movie
      */
     private String userId;
 

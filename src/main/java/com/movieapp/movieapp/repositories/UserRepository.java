@@ -1,5 +1,9 @@
 package com.movieapp.movieapp.repositories;
 
-public interface UserRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.movieapp.movieapp.domain.documents.User;
+
+public interface UserRepository extends MongoRepository<User, String> {
 
 }
