@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserDto {
 
-    @Id
     private String id;
 
     /**
