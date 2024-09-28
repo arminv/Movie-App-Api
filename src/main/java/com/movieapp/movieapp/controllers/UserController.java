@@ -1,5 +1,8 @@
 package com.movieapp.movieapp.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +28,18 @@ public class UserController {
     private Mapper<User, UserDto> userMapper;
 
     private Mapper<CreateUpdateUserRequest, CreateUpdateUserRequestDto> createUpdateRequestMapper;
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable final String id) {
+        return userService.getUserById(id)
+            .map(user ->
+                // Map the User to a UserDTO:
+                ResponseEntity.ok(userMapper.mapTo(user))
+            )
+            .orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND)
+            );
+    }
 
     @PutMapping(value = {"/{id}", "/"})
     public UserDto createUpdateUser(

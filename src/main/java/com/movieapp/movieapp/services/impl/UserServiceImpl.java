@@ -3,6 +3,7 @@ package com.movieapp.movieapp.services.impl;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,11 @@ import lombok.AllArgsConstructor;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
+    @Override
+    public Optional<User> getUserById(final String userId) {
+        return userRepository.findById(userId);
+    }
 
     @Override
     public User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest) {
@@ -48,6 +54,11 @@ public class UserServiceImpl implements UserService {
 
             return userRepository.save(newUser);
         });
+    }
+
+    @Override
+    public void deleteUser(final String userId) {
+        userRepository.deleteById(userId);
     }
 
 }
