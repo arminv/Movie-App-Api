@@ -1,8 +1,16 @@
 package com.movieapp.movieapp.controllers;
 
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
+import com.movieapp.movieapp.domain.documents.User;
+import com.movieapp.movieapp.domain.dtos.UserDto;
+import com.movieapp.movieapp.domain.dtos.CreateUpdateUserRequestDto;
+import com.movieapp.movieapp.mappers.Mapper;
 import com.movieapp.movieapp.services.UserService;
 
 import lombok.AllArgsConstructor;
@@ -14,11 +22,23 @@ public class UserController {
 
     private UserService userService;
 
-    //    TODO:
-//    @PutMapping(path = "/{id}")
-//    public UserDto createUpdateUser(
-////        @PathVariable final String id,
-//        @RequestBody final CreateUpdateUserRequestDto requestBody
-//    ) {
-//    }
+    private Mapper<User, UserDto> userMapper;
+
+    private Mapper<CreateUpdateUserRequest, CreateUpdateUserRequestDto> createUpdateRequestMapper;
+
+    @PutMapping(value = {"/{id}", "/"})
+    public UserDto createUpdateUser(
+        @PathVariable(required = false) final String id,
+        @RequestBody final CreateUpdateUserRequestDto requestBody
+    ) {
+        // Convert from the create/update User request presentation layer to service layer object.
+        final CreateUpdateUserRequest createUpdateUserRequest = createUpdateRequestMapper.mapFrom(requestBody);
+
+        // Pass the converted object to the service layer to create/update the User.
+        final User createUpdatedUser = userService.createUpdateUser(id, createUpdateUserRequest);
+
+        // Map the returned User to a presentation layer object and return.
+        return userMapper.mapTo(createUpdatedUser);
+    }
+
 }

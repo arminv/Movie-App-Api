@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.domain.documents;
+package com.movieapp.movieapp.domain.dtos;
 
 import java.time.LocalDateTime;
 
@@ -9,18 +9,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * A user in the system.
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class UserDto {
 
-    /**
-     * ID of this user
-     */
     @Id
     private String id;
 
