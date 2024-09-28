@@ -2,8 +2,6 @@ package com.movieapp.movieapp.domain.dtos;
 
 import java.time.LocalDateTime;
 
-import org.springframework.data.annotation.Id;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

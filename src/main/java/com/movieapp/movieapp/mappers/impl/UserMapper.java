@@ -10,7 +10,7 @@ import com.movieapp.movieapp.mappers.Mapper;
 public class UserMapper implements Mapper<User, UserDto> {
 
     @Override
-    public UserDto mapTo(User user) {
+    public UserDto mapTo(final User user) {
         return UserDto.builder()
             .id(user.getId())
             .name(user.getName())
@@ -21,7 +21,7 @@ public class UserMapper implements Mapper<User, UserDto> {
     }
 
     @Override
-    public User mapFrom(UserDto userDto) {
+    public User mapFrom(final UserDto userDto) {
         return User.builder()
             .id(userDto.getId())
             .name(userDto.getName())

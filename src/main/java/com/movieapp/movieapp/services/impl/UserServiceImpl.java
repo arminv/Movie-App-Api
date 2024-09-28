@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest) {
-        String finalUserId = Objects.requireNonNullElse(userId, "");
+        final String finalUserId = Objects.requireNonNullElse(userId, "");
 
         return userRepository.findById(finalUserId).map(
             existingUser -> {
