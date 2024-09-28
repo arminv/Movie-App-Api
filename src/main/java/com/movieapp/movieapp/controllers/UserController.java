@@ -1,5 +1,6 @@
 package com.movieapp.movieapp.controllers;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
 import com.movieapp.movieapp.domain.documents.User;
@@ -49,11 +51,15 @@ public class UserController {
         // Convert from the create/update User request presentation layer to service layer object.
         final CreateUpdateUserRequest createUpdateUserRequest = createUpdateRequestMapper.mapFrom(requestBody);
 
-        // Pass the converted object to the service layer to create/update the User.
-        final User createUpdatedUser = userService.createUpdateUser(id, createUpdateUserRequest);
-
-        // Map the returned User to a presentation layer object and return.
-        return userMapper.mapTo(createUpdatedUser);
+        try {
+            // Pass the converted object to the service layer to create/update the User.
+            final User createUpdatedUser = userService.createUpdateUser(id, createUpdateUserRequest);
+            // Map the returned User to a presentation layer object and return.
+            return userMapper.mapTo(createUpdatedUser);
+        } catch (DuplicateKeyException e) {
+            throw new ResponseStatusException(
+                HttpStatus.CONFLICT, "User already exists", e);
+        }
     }
 
 }

@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
             });
         } catch (DuplicateKeyException e) {
             log.warning(e.getMessage());
-            throw new RuntimeException("User already exists");
+            throw new DuplicateKeyException("User already exists");
         }
     }
 
