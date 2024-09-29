@@ -53,7 +53,7 @@ public class MovieController {
     public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
         return movieService.getMoviesByUserId(userId)
             .stream()
-            .map(movie -> movieMapper.mapTo(movie))
+            .map(movieMapper::mapTo)
             .toList();
     }
 
