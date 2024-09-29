@@ -1,8 +1,11 @@
 package com.movieapp.movieapp.controllers;
 
+import java.util.List;
+
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,12 +49,17 @@ public class MovieController {
         }
     }
 
+    @GetMapping("/user/{userId}")
+    public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
+        return movieService.getMoviesByUserId(userId)
+            .stream()
+            .map(movie -> movieMapper.mapTo(movie))
+            .toList();
+    }
+
     @DeleteMapping(path = "/{id}")
     public void deleteMovie(@PathVariable final String id) {
         movieService.deleteMovie(id);
     }
-
-    //TODO:
-// @route  GET api/movies/:userId
 
 }

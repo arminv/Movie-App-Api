@@ -1,6 +1,7 @@
 package com.movieapp.movieapp.services.impl;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.stereotype.Service;
@@ -50,6 +51,11 @@ public class MovieServiceImpl implements MovieService {
 
             return movieRepository.save(newMovie);
         });
+    }
+
+    @Override
+    public List<Movie> getMoviesByUserId(String userId) {
+        return movieRepository.getMoviesByUserId(userId);
     }
 
     @Override
