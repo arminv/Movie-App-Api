@@ -1,31 +1,20 @@
-package com.movieapp.movieapp.domain.documents;
+package com.movieapp.movieapp.domain.dtos;
+
+import java.time.LocalDateTime;
+
+import com.movieapp.movieapp.domain.documents.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.CompoundIndex;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDateTime;
-
-/**
- * A movie saved by a {@link User}.
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document
-@CompoundIndex(name = "unique_userId_movieDBId_name_idx", def = "{'userId' : 1, 'movieDBId' : 1, 'name': 1}", unique = true)
-public class Movie {
+public class MovieDto {
 
-    /**
-     * ID of this movie
-     */
-    @Id
     private String id;
 
     /**
