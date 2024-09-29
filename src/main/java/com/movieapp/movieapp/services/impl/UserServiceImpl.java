@@ -31,37 +31,32 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest) {
-        try {
-            final String finalUserId = Objects.requireNonNullElse(userId, "");
+        final String finalUserId = Objects.requireNonNullElse(userId, "");
 
-            return userRepository.findById(finalUserId).map(
-                existingUser -> {
-                    // Update the existing User
-                    final User updatedUser = User.builder()
-                        .id(finalUserId)
-                        .name(createUpdateUserRequest.getName())
-                        .email(createUpdateUserRequest.getEmail())
-                        .created(existingUser.getCreated())
-                        .lastUpdated(LocalDateTime.now())
-                        .build();
-
-                    return userRepository.save(updatedUser);
-                }).orElseGet(() -> {
-                // Create a new User
-                final LocalDateTime now = LocalDateTime.now();
-                final User newUser = User.builder()
+        return userRepository.findById(finalUserId).map(
+            existingUser -> {
+                // Update the existing User
+                final User updatedUser = User.builder()
+                    .id(finalUserId)
                     .name(createUpdateUserRequest.getName())
                     .email(createUpdateUserRequest.getEmail())
-                    .created(now)
-                    .lastUpdated(now)
+                    .created(existingUser.getCreated())
+                    .lastUpdated(LocalDateTime.now())
                     .build();
 
-                return userRepository.save(newUser);
-            });
-        } catch (DuplicateKeyException e) {
-            log.warning(e.getMessage());
-            throw new DuplicateKeyException("User already exists");
-        }
+                return userRepository.save(updatedUser);
+            }).orElseGet(() -> {
+            // Create a new User
+            final LocalDateTime now = LocalDateTime.now();
+            final User newUser = User.builder()
+                .name(createUpdateUserRequest.getName())
+                .email(createUpdateUserRequest.getEmail())
+                .created(now)
+                .lastUpdated(now)
+                .build();
+
+            return userRepository.save(newUser);
+        });
     }
 
     @Override

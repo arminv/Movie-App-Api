@@ -26,6 +26,8 @@ public class Movie {
     @Id
     private String id;
 
+    private String movieDBId;
+
     /**
      * Name of this movie
      */
