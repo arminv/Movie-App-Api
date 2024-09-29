@@ -5,9 +5,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
-
 
 import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
 import com.movieapp.movieapp.domain.documents.User;

@@ -13,8 +13,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
 import com.movieapp.movieapp.domain.documents.User;
-import com.movieapp.movieapp.domain.dtos.UserDto;
 import com.movieapp.movieapp.domain.dtos.CreateUpdateUserRequestDto;
+import com.movieapp.movieapp.domain.dtos.UserDto;
 import com.movieapp.movieapp.mappers.Mapper;
 import com.movieapp.movieapp.services.UserService;
 
