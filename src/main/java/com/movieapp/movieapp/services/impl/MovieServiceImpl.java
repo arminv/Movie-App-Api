@@ -54,7 +54,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getMoviesByUserId(String userId) {
+    public List<Movie> getMoviesByUserId(final String userId) {
         return movieRepository.getMoviesByUserId(userId);
     }
 

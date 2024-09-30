@@ -9,8 +9,8 @@ public interface MovieService {
 
     Movie createUpdateMovie(final String movieId, final CreateUpdateMovieRequest createUpdateMovieRequest);
 
-    void deleteMovie(String movieId);
+    void deleteMovie(final String movieId);
 
-    List<Movie> getMoviesByUserId(String userId);
+    List<Movie> getMoviesByUserId(final String userId);
 
 }

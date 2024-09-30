@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveOAuth2User(OAuth2User oAuth2User) {
+    public void saveOAuth2User(final OAuth2User oAuth2User) {
         String email = oAuth2User.getAttribute("email");
 
         // Check if user exists:
