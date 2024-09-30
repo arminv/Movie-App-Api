@@ -3,6 +3,8 @@ package com.movieapp.movieapp.controllers;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -48,18 +50,23 @@ public class UserController {
         @PathVariable(required = false) final String id,
         @RequestBody final CreateUpdateUserRequestDto requestBody
     ) {
-        // Convert from the create/update User request presentation layer to service layer object.
+        // Convert from the create/update User request presentation layer to service layer object:
         final CreateUpdateUserRequest createUpdateUserRequest = createUpdateRequestMapper.mapFrom(requestBody);
 
         try {
-            // Pass the converted object to the service layer to create/update the User.
+            // Pass the converted object to the service layer to create/update the User:
             final User createUpdatedUser = userService.createUpdateUser(id, createUpdateUserRequest);
-            // Map the returned User to a presentation layer object and return.
+            // Map the returned User to a presentation layer object and return:
             return userMapper.mapTo(createUpdatedUser);
         } catch (DuplicateKeyException e) {
             throw new ResponseStatusException(
                 HttpStatus.CONFLICT, "User already exists", e);
         }
+    }
+
+    @GetMapping("/user")
+    public String getUserInfo(@AuthenticationPrincipal OAuth2User principal) {
+        return userService.getUserInfo(principal);
     }
 
 }

@@ -39,6 +39,11 @@ public class User {
     private String email;
 
     /**
+     * Avatar URL (profile pic)
+     */
+    private String avatarUrl;
+
+    /**
      * Date created
      */
     private LocalDateTime created;
@@ -47,5 +52,8 @@ public class User {
      * Date last updated
      */
     private LocalDateTime lastUpdated;
+
+    //    TODO:
+//    private LocalDateTime lastLoggedInOn;
 
 }

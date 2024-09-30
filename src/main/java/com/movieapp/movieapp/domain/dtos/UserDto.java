@@ -26,6 +26,11 @@ public class UserDto {
     private String email;
 
     /**
+     * Avatar URL (profile pic)
+     */
+    private String avatarUrl;
+
+    /**
      * Date created
      */
     private LocalDateTime created;
