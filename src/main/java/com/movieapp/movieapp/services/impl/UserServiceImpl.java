@@ -33,6 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest) {
         final String finalUserId = Objects.requireNonNullElse(userId, "");
+        final LocalDateTime now = LocalDateTime.now();
 
         return userRepository.findById(finalUserId).map(
             existingUser -> {
@@ -43,13 +44,12 @@ public class UserServiceImpl implements UserService {
                     .email(createUpdateUserRequest.getEmail())
                     .avatarUrl(existingUser.getAvatarUrl())
                     .created(existingUser.getCreated())
-                    .lastUpdated(LocalDateTime.now())
+                    .lastUpdated(now)
                     .build();
 
                 return userRepository.save(updatedUser);
             }).orElseGet(() -> {
             // Create a new User
-            final LocalDateTime now = LocalDateTime.now();
             final User newUser = User.builder()
                 .name(createUpdateUserRequest.getName())
                 .email(createUpdateUserRequest.getEmail())
@@ -64,21 +64,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveOAuth2User(final OAuth2User oAuth2User) {
-        String email = oAuth2User.getAttribute("email");
+        final String email = oAuth2User.getAttribute("email");
+        final LocalDateTime now = LocalDateTime.now();
 
         // Check if user exists:
         Optional<User> existingUser = userRepository.findByEmail(email);
         if (existingUser.isPresent()) {
+            existingUser.get().setLastLoggedInOn(now);
+            userRepository.save(existingUser.get());
             return;
         }
 
         // If not, create a new user:
-        User newUser = User.builder()
+        final User newUser = User.builder()
             .name(oAuth2User.getAttribute("name"))
             .email(email)
             .avatarUrl(oAuth2User.getAttribute("avatar_url"))
-            .created(LocalDateTime.now())
-            .lastUpdated(LocalDateTime.now())
+            .created(now)
+            .lastUpdated(now)
+            .lastLoggedInOn(now)
             .build();
 
         userRepository.save(newUser);

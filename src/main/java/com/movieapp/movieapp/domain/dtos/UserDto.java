@@ -40,4 +40,9 @@ public class UserDto {
      */
     private LocalDateTime lastUpdated;
 
+    /**
+     * Date last logged in
+     */
+    private LocalDateTime lastLoggedInOn;
+
 }

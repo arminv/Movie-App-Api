@@ -24,13 +24,14 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication) throws IOException {
-        // Extract user details from the OAuth2User
+        // Extract user details from the OAuth2User:
         OAuth2User oauthUser = (OAuth2User) authentication.getPrincipal();
 
-        // Call the service to save or update user information in MongoDB
+        // Call the service to save or update user information in MongoDB:
         userService.saveOAuth2User(oauthUser);
 
-        // Redirect to home page or any other page
+        // TODO: make this an env variable:
+        // Redirect to home page or any other page:
         response.sendRedirect("/users/user");
     }
 

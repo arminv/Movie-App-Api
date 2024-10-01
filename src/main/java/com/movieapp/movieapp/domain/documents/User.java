@@ -53,7 +53,9 @@ public class User {
      */
     private LocalDateTime lastUpdated;
 
-    //    TODO:
-//    private LocalDateTime lastLoggedInOn;
+    /**
+     * Date last logged in
+     */
+    private LocalDateTime lastLoggedInOn;
 
 }
