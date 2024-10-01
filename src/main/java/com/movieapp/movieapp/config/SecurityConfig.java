@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             )
             .oauth2Login(oauth2 -> oauth2
-                .successHandler(customOAuth2SuccessHandler) // Use custom success handler
+                .successHandler(customOAuth2SuccessHandler)
             )
             .logout(logout -> logout
                 .permitAll()
@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")  // Clear session cookie
-            ); // Redirect to home on logout
+            );
 
 //        TODO: only for testing purposes!
 //        http.csrf().disable();
