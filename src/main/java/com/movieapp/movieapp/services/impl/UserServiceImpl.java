@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(userId);
     }
 
-    //    TODO: maybe deprecate this?
+    //    TODO: deprecate this if not supporting form-based at all
     @Override
     public User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest) {
         final String finalUserId = Objects.requireNonNullElse(userId, "");

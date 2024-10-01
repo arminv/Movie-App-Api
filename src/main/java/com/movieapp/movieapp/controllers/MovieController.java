@@ -49,6 +49,7 @@ public class MovieController {
         }
     }
 
+    // TODO: support pagination and sorting
     @GetMapping("/user/{userId}")
     public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
         return movieService.getMoviesByUserId(userId)
