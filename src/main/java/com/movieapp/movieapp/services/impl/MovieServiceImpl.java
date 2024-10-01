@@ -35,6 +35,8 @@ public class MovieServiceImpl implements MovieService {
                     .name(createUpdateMovieRequest.getName())
                     .created(existingMovie.getCreated())
                     .lastUpdated(LocalDateTime.now())
+                    .rating(createUpdateMovieRequest.getRating())
+                    .review(createUpdateMovieRequest.getReview())
                     .build();
 
                 return movieRepository.save(updatedMovie);
@@ -47,6 +49,8 @@ public class MovieServiceImpl implements MovieService {
                 .name(createUpdateMovieRequest.getName())
                 .created(now)
                 .lastUpdated(now)
+                .rating(createUpdateMovieRequest.getRating())
+                .review(createUpdateMovieRequest.getReview())
                 .build();
 
             return movieRepository.save(newMovie);

@@ -17,4 +17,8 @@ public class CreateUpdateMovieRequestDto {
 
     private String userId;
 
+    private float rating;
+
+    private String review;
+
 }

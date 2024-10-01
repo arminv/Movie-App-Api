@@ -28,7 +28,7 @@ public class CustomOAuth2SuccessHandler implements AuthenticationSuccessHandler 
         OAuth2User oauthUser = (OAuth2User) authentication.getPrincipal();
 
         // Call the service to save or update user information in MongoDB:
-        userService.saveOAuth2User(oauthUser);
+        userService.createUpdateOAuth2User(oauthUser);
 
         // TODO: make this an env variable:
         // Redirect to home page or any other page:

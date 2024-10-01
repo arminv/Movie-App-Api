@@ -14,7 +14,7 @@ public interface UserService {
 
     User createUpdateUser(final String userId, final CreateUpdateUserRequest createUpdateUserRequest);
 
-    void saveOAuth2User(final OAuth2User oAuth2User);
+    void createUpdateOAuth2User(final OAuth2User oAuth2User);
 
     void deleteUser(final String userId);
 

@@ -53,4 +53,14 @@ public class Movie {
      */
     private LocalDateTime lastUpdated;
 
+    /**
+     * Rating given to movie by user
+     */
+    private float rating;
+
+    /**
+     * Review given to movie by user
+     */
+    private String review;
+
 }

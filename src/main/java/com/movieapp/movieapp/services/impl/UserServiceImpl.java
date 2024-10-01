@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveOAuth2User(final OAuth2User oAuth2User) {
+    public void createUpdateOAuth2User(final OAuth2User oAuth2User) {
         final String email = oAuth2User.getAttribute("email");
         final LocalDateTime now = LocalDateTime.now();
 
