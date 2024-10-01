@@ -3,6 +3,7 @@ package com.movieapp.movieapp.services.impl;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -31,12 +32,12 @@ public class MovieServiceImpl implements MovieService {
                 final Movie updatedMovie = Movie.builder()
                     .id(finalMovieId)
                     .movieDBId(createUpdateMovieRequest.getMovieDBId())
-                    .userId(createUpdateMovieRequest.getUserId())
-                    .name(createUpdateMovieRequest.getName())
+                    .userId(Optional.ofNullable(createUpdateMovieRequest.getUserId()).orElseGet(existingMovie::getUserId))
+                    .name(Optional.ofNullable(createUpdateMovieRequest.getName()).orElseGet(existingMovie::getName))
                     .created(existingMovie.getCreated())
                     .lastUpdated(LocalDateTime.now())
-                    .rating(createUpdateMovieRequest.getRating())
-                    .review(createUpdateMovieRequest.getReview())
+                    .rating(createUpdateMovieRequest.getRating() == 0f ? existingMovie.getRating() : createUpdateMovieRequest.getRating())
+                    .review(Optional.ofNullable(createUpdateMovieRequest.getReview()).orElseGet(existingMovie::getReview))
                     .build();
 
                 return movieRepository.save(updatedMovie);
@@ -50,7 +51,7 @@ public class MovieServiceImpl implements MovieService {
                 .created(now)
                 .lastUpdated(now)
                 .rating(createUpdateMovieRequest.getRating())
-                .review(createUpdateMovieRequest.getReview())
+                .review(Optional.ofNullable(createUpdateMovieRequest.getReview()).orElse(""))
                 .build();
 
             return movieRepository.save(newMovie);
