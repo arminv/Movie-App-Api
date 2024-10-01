@@ -35,8 +35,12 @@ public class SecurityConfig {
                 .successHandler(customOAuth2SuccessHandler) // Use custom success handler
             )
             .logout(logout -> logout
-                .logoutSuccessUrl("/")
-                .permitAll()); // Redirect to home on logout
+                .permitAll()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")  // Clear session cookie
+            ); // Redirect to home on logout
 
 //        TODO: only for testing purposes!
 //        http.csrf().disable();
