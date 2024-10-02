@@ -2,6 +2,7 @@ package com.movieapp.movieapp.services.impl;
 
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -94,8 +95,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getUserInfo(final @AuthenticationPrincipal OAuth2User principal) {
-        return principal.getAttributes().toString();
+    public Map<String, Object> getUserInfo(final @AuthenticationPrincipal OAuth2User principal) {
+        return principal.getAttributes();
     }
 
 }

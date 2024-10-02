@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /**
  * A movie saved by a {@link User}.
@@ -34,6 +35,7 @@ public class Movie {
     /**
      * ID of this movie in Movie DB (external)
      */
+    @NonNull
     private String movieDBId;
 
     /**
@@ -44,18 +46,21 @@ public class Movie {
     /**
      * ID of {@link User} who saved this movie
      */
+    @NonNull
     @CreatedBy
     private String userId;
 
     /**
      * Date created
      */
+    @NonNull
     @CreatedDate
     private LocalDateTime created;
 
     /**
      * Date last updated
      */
+    @NonNull
     @LastModifiedDate
     private LocalDateTime lastUpdated;
 

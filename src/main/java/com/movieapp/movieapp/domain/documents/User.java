@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 /**
  * A user in the system.
@@ -32,11 +33,13 @@ public class User {
     /**
      * Name of the user
      */
+    @NonNull
     private String name;
 
     /**
      * Email for this user
      */
+    @NonNull
     @Indexed(unique = true)
     private String email;
 
@@ -48,12 +51,14 @@ public class User {
     /**
      * Date created
      */
+    @NonNull
     @CreatedDate
     private LocalDateTime created;
 
     /**
      * Date last updated
      */
+    @NonNull
     @LastModifiedDate
     private LocalDateTime lastUpdated;
 

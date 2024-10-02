@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
@@ -20,26 +21,27 @@ public class MovieDto {
     /**
      * ID of this movie in Movie DB (external)
      */
+    @NonNull
     private String movieDBId;
 
-    /**
-     * Name of this movie
-     */
     private String name;
 
     /**
      * ID of {@link User} who saved this movie
      */
+    @NonNull
     private String userId;
 
     /**
      * Date created
      */
+    @NonNull
     private LocalDateTime created;
 
     /**
      * Date last updated
      */
+    @NonNull
     private LocalDateTime lastUpdated;
 
     /**

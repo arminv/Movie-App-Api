@@ -1,5 +1,6 @@
 package com.movieapp.movieapp.services;
 
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,6 +19,6 @@ public interface UserService {
 
     void deleteUser(final String userId);
 
-    String getUserInfo(final @AuthenticationPrincipal OAuth2User principal);
+    Map<String, Object> getUserInfo(final @AuthenticationPrincipal OAuth2User principal);
 
 }

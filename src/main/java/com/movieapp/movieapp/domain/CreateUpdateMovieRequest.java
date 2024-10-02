@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
@@ -11,10 +12,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CreateUpdateMovieRequest {
 
+    @NonNull
     private String movieDBId;
 
     private String name;
 
+    @NonNull
     private String userId;
 
     private float rating;

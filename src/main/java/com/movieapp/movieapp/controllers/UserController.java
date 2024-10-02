@@ -66,7 +66,7 @@ public class UserController {
 
     @GetMapping("/user")
     public String getUserInfo(@AuthenticationPrincipal OAuth2User principal) {
-        return userService.getUserInfo(principal);
+        return userService.getUserInfo(principal).toString();
     }
 
 }

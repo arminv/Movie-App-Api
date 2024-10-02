@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @Data
 @AllArgsConstructor
@@ -13,16 +14,21 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UserDto {
 
+    /**
+     * ID of this user
+     */
     private String id;
 
     /**
      * Name of the user
      */
+    @NonNull
     private String name;
 
     /**
      * Email for this user
      */
+    @NonNull
     private String email;
 
     /**
@@ -33,11 +39,13 @@ public class UserDto {
     /**
      * Date created
      */
+    @NonNull
     private LocalDateTime created;
 
     /**
      * Date last updated
      */
+    @NonNull
     private LocalDateTime lastUpdated;
 
     /**
