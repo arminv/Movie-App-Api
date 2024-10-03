@@ -24,15 +24,15 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie createUpdateMovie(final String movieId, final CreateUpdateMovieRequest createUpdateMovieRequest) {
-        final String finalMovieId = Objects.requireNonNullElse(movieId, "");
+        final String targetMovieId = Objects.requireNonNullElse(movieId, "");
 
-        return movieRepository.findById(finalMovieId).map(
+        return movieRepository.findById(targetMovieId).map(
             existingMovie -> {
                 // Update the existing Movie
                 final Movie updatedMovie = Movie.builder()
-                    .id(finalMovieId)
+                    .id(targetMovieId)
                     .movieDBId(createUpdateMovieRequest.getMovieDBId())
-                    .userId(Optional.ofNullable(createUpdateMovieRequest.getUserId()).orElseGet(existingMovie::getUserId))
+                    .userId(createUpdateMovieRequest.getUserId())
                     .name(Optional.ofNullable(createUpdateMovieRequest.getName()).orElseGet(existingMovie::getName))
                     .created(existingMovie.getCreated())
                     .lastUpdated(LocalDateTime.now())
@@ -47,7 +47,7 @@ public class MovieServiceImpl implements MovieService {
             final Movie newMovie = Movie.builder()
                 .movieDBId(createUpdateMovieRequest.getMovieDBId())
                 .userId(createUpdateMovieRequest.getUserId())
-                .name(createUpdateMovieRequest.getName())
+                .name(Optional.ofNullable(createUpdateMovieRequest.getName()).orElse(""))
                 .created(now)
                 .lastUpdated(now)
                 .rating(createUpdateMovieRequest.getRating())

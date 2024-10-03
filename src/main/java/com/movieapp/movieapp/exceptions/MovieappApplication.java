@@ -1,9 +1,9 @@
 package com.movieapp.movieapp.exceptions;
 
-public class MovieappApplication extends RuntimeException {
+import lombok.NoArgsConstructor;
 
-    public MovieappApplication() {
-    }
+@NoArgsConstructor
+public class MovieappApplication extends RuntimeException {
 
     public MovieappApplication(String message) {
         super(message);
