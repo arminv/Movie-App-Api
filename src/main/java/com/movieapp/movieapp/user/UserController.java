@@ -15,6 +15,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.movieapp.movieapp.mappers.Mapper;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -28,18 +30,13 @@ public class UserController {
 
     private Mapper<CreateUpdateUserRequest, CreateUpdateUserRequestDto> createUpdateRequestMapper;
 
-    @GetMapping(path = "/{id}")
-    public ResponseEntity<UserDto> getUserById(@PathVariable final String id) {
-        return userService.getUserById(id)
-            .map(user ->
-                // Map the User to a UserDTO:
-                ResponseEntity.ok(userMapper.mapTo(user))
-            )
-            .orElseGet(() ->
-                new ResponseEntity<>(HttpStatus.NOT_FOUND)
-            );
-    }
-
+    @Operation(
+        description = "Create or Update a user by ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User successfully created/updated"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
     @PutMapping(value = {"/{id}", "/"})
     public UserDto createUpdateUser(
         @PathVariable(required = false) final String id,
@@ -59,6 +56,32 @@ public class UserController {
         }
     }
 
+    @Operation(
+        description = "Get a user by ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User successfully found"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable final String id) {
+        return userService.getUserById(id)
+            .map(user ->
+                // Map the User to a UserDTO:
+                ResponseEntity.ok(userMapper.mapTo(user))
+            )
+            .orElseGet(() ->
+                new ResponseEntity<>(HttpStatus.NOT_FOUND)
+            );
+    }
+
+    @Operation(
+        description = "Get detailed user information by ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User successfully found"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
     @GetMapping("/user")
     public String getUserInfo(@AuthenticationPrincipal OAuth2User principal) {
         return userService.getUserInfo(principal).toString();

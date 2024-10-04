@@ -15,6 +15,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.movieapp.movieapp.mappers.Mapper;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -28,6 +30,13 @@ public class MovieController {
 
     private Mapper<CreateUpdateMovieRequest, CreateUpdateMovieRequestDto> createUpdateRequestMapper;
 
+    @Operation(
+        description = "Create or Update a movie by ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Movie successfully created/updated"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
     @PutMapping(value = {"/{id}", "/"})
     public MovieDto createUpdateMovie(
         @PathVariable(required = false) final String id,
@@ -45,6 +54,13 @@ public class MovieController {
     }
 
     // TODO: support pagination and sorting
+    @Operation(
+        description = "Get the list of liked movies by user ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Movies successfully found"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
     @GetMapping("/user/{userId}")
     public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
         return movieService.getMoviesByUserId(userId)
@@ -53,6 +69,13 @@ public class MovieController {
             .toList();
     }
 
+    @Operation(
+        description = "Delete a movie by ID",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Movies successfully found"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
     @DeleteMapping(path = "/{id}")
     public void deleteMovie(@PathVariable final String id) {
         movieService.deleteMovie(id);
