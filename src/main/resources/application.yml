@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: movieapp
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: movieapp
+      username: movieapp
+      password: fnwM<Sj^%CDyc@
+      auto-index-creation: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+
+server:
+  error:
+    include-message: always
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
