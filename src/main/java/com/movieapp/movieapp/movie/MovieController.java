@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.controllers;
+package com.movieapp.movieapp.movie;
 
 import java.util.List;
 
@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.movieapp.movieapp.domain.CreateUpdateMovieRequest;
-import com.movieapp.movieapp.domain.documents.Movie;
-import com.movieapp.movieapp.domain.dtos.CreateUpdateMovieRequestDto;
-import com.movieapp.movieapp.domain.dtos.MovieDto;
 import com.movieapp.movieapp.mappers.Mapper;
-import com.movieapp.movieapp.services.MovieService;
 
 import lombok.AllArgsConstructor;
 

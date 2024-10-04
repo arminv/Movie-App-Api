@@ -1,6 +1,12 @@
-package com.movieapp.movieapp.domain.dtos;
+package com.movieapp.movieapp.user;
 
 import java.time.LocalDateTime;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,15 +14,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
+/**
+ * A user in the system.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDto {
+@Document
+public class User {
 
     /**
      * ID of this user
      */
+    @Id
     private String id;
 
     /**
@@ -29,6 +40,7 @@ public class UserDto {
      * Email for this user
      */
     @NonNull
+    @Indexed(unique = true)
     private String email;
 
     /**
@@ -40,12 +52,14 @@ public class UserDto {
      * Date created
      */
     @NonNull
+    @CreatedDate
     private LocalDateTime created;
 
     /**
      * Date last updated
      */
     @NonNull
+    @LastModifiedDate
     private LocalDateTime lastUpdated;
 
     /**

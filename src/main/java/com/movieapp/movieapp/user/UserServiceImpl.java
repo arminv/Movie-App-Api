@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.services.impl;
+package com.movieapp.movieapp.user;
 
 
 import java.time.LocalDateTime;
@@ -9,11 +9,6 @@ import java.util.Optional;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
-import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
-import com.movieapp.movieapp.domain.documents.User;
-import com.movieapp.movieapp.repositories.UserRepository;
-import com.movieapp.movieapp.services.UserService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;

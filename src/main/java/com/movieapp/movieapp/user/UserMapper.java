@@ -1,10 +1,8 @@
-package com.movieapp.movieapp.mappers.impl;
+package com.movieapp.movieapp.user;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import com.movieapp.movieapp.domain.documents.User;
-import com.movieapp.movieapp.domain.dtos.UserDto;
 import com.movieapp.movieapp.mappers.Mapper;
 
 @Component

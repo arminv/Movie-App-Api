@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.domain;
+package com.movieapp.movieapp.movie;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,18 +10,18 @@ import lombok.NonNull;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateUpdateUserRequest {
+public class CreateUpdateMovieRequest {
 
-    /**
-     * Name of the user
-     */
     @NonNull
+    private String movieDBId;
+
     private String name;
 
-    /**
-     * Email for this user
-     */
     @NonNull
-    private String email;
+    private String userId;
+
+    private float rating;
+
+    private String review;
 
 }

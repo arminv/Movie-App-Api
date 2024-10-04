@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.controllers;
+package com.movieapp.movieapp.user;
 
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -13,12 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.movieapp.movieapp.domain.CreateUpdateUserRequest;
-import com.movieapp.movieapp.domain.documents.User;
-import com.movieapp.movieapp.domain.dtos.CreateUpdateUserRequestDto;
-import com.movieapp.movieapp.domain.dtos.UserDto;
 import com.movieapp.movieapp.mappers.Mapper;
-import com.movieapp.movieapp.services.UserService;
 
 import lombok.AllArgsConstructor;
 

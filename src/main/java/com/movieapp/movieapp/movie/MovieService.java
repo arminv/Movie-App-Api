@@ -1,9 +1,6 @@
-package com.movieapp.movieapp.services;
+package com.movieapp.movieapp.movie;
 
 import java.util.List;
-
-import com.movieapp.movieapp.domain.CreateUpdateMovieRequest;
-import com.movieapp.movieapp.domain.documents.Movie;
 
 public interface MovieService {
 

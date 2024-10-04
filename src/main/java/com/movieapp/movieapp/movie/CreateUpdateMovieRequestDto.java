@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.domain.dtos;
+package com.movieapp.movieapp.movie;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

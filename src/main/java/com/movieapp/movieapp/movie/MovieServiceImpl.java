@@ -1,4 +1,4 @@
-package com.movieapp.movieapp.services.impl;
+package com.movieapp.movieapp.movie;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -6,11 +6,6 @@ import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
-
-import com.movieapp.movieapp.domain.CreateUpdateMovieRequest;
-import com.movieapp.movieapp.domain.documents.Movie;
-import com.movieapp.movieapp.repositories.MovieRepository;
-import com.movieapp.movieapp.services.MovieService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
