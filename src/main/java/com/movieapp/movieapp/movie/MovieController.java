@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -38,6 +39,7 @@ public class MovieController {
         }
     )
     @PutMapping(value = {"/{id}", "/"})
+    @ResponseStatus(HttpStatus.CREATED)
     public MovieDto createUpdateMovie(
         @PathVariable(required = false) final String id,
         @RequestBody final CreateUpdateMovieRequestDto requestBody
@@ -61,7 +63,8 @@ public class MovieController {
             @ApiResponse(responseCode = "403", description = "Missing or invalid user")
         }
     )
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
         return movieService.getMoviesByUserId(userId)
             .stream()
@@ -77,6 +80,7 @@ public class MovieController {
         }
     )
     @DeleteMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public void deleteMovie(@PathVariable final String id) {
         movieService.deleteMovie(id);
     }

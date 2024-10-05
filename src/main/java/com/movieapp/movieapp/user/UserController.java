@@ -1,5 +1,7 @@
 package com.movieapp.movieapp.user;
 
+import java.util.Map;
+
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -38,6 +41,7 @@ public class UserController {
         }
     )
     @PutMapping(value = {"/{id}", "/"})
+    @ResponseStatus(HttpStatus.CREATED)
     public UserDto createUpdateUser(
         @PathVariable(required = false) final String id,
         @RequestBody final CreateUpdateUserRequestDto requestBody
@@ -64,6 +68,7 @@ public class UserController {
         }
     )
     @GetMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<UserDto> getUserById(@PathVariable final String id) {
         return userService.getUserById(id)
             .map(user ->
@@ -76,15 +81,16 @@ public class UserController {
     }
 
     @Operation(
-        description = "Get detailed user information by ID",
+        description = "Get detailed information for current user",
         responses = {
             @ApiResponse(responseCode = "200", description = "User successfully found"),
             @ApiResponse(responseCode = "403", description = "Missing or invalid user")
         }
     )
     @GetMapping("/user")
-    public String getUserInfo(@AuthenticationPrincipal OAuth2User principal) {
-        return userService.getUserInfo(principal).toString();
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Map<String, Object> getUserInfo(@AuthenticationPrincipal OAuth2User principal) {
+        return userService.getUserInfo(principal);
     }
 
 }

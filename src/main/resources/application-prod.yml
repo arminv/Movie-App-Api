@@ -1,0 +1,10 @@
+spring:
+  data:
+    #    TODO:
+    mongodb:
+      host:
+      port: 27017
+      database: movieapp
+      username:
+      password:
+      auto-index-creation: true

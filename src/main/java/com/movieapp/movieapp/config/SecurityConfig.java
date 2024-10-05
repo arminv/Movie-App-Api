@@ -1,15 +1,22 @@
 package com.movieapp.movieapp.config;
 
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${spring.profiles.active}")
+    private String activeProfile;
 
     private final CustomOAuth2SuccessHandler customOAuth2SuccessHandler;
 
@@ -42,8 +49,10 @@ public class SecurityConfig {
                 .deleteCookies("JSESSIONID")  // Clear session cookie
             );
 
-//        TODO: only for testing purposes!
-//        http.csrf().disable();
+        // Note: only for development:
+        if (Objects.equals(activeProfile, "dev")) {
+            http.csrf(AbstractHttpConfigurer::disable);
+        }
 
         return http.build();
     }

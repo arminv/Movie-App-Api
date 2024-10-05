@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUpdateOAuth2User(final OAuth2User oAuth2User) {
-        final String email = oAuth2User.getAttribute("email");
+        final String email = Objects.requireNonNull(oAuth2User.getAttribute("email"));
         final LocalDateTime now = LocalDateTime.now();
 
         // Check if user exists:
@@ -72,8 +72,9 @@ public class UserServiceImpl implements UserService {
         }
 
         // If not, create a new user:
+        final String name = Objects.requireNonNull(oAuth2User.getAttribute("name"));
         final User newUser = User.builder()
-            .name(oAuth2User.getAttribute("name"))
+            .name(name)
             .email(email)
             .avatarUrl(oAuth2User.getAttribute("avatar_url"))
             .created(now)
