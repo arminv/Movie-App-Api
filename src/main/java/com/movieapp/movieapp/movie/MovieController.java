@@ -1,8 +1,7 @@
 package com.movieapp.movieapp.movie;
 
-import java.util.List;
-
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -65,11 +65,12 @@ public class MovieController {
     )
     @GetMapping("/users/{userId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public List<MovieDto> getMoviesByUserId(@PathVariable final String userId) {
-        return movieService.getMoviesByUserId(userId)
-            .stream()
-            .map(movieMapper::mapTo)
-            .toList();
+    public Page<MovieDto> getMoviesByUserId(
+        @PathVariable final String userId,
+        @RequestParam(defaultValue = "0") final int page,
+        @RequestParam(defaultValue = "30") final int pageSize) {
+        return movieService.getMoviesByUserId(userId, page, pageSize)
+            .map(movieMapper::mapTo);
     }
 
     @Operation(

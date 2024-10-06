@@ -1,6 +1,6 @@
 package com.movieapp.movieapp.movie;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
 
 public interface MovieService {
 
@@ -8,6 +8,6 @@ public interface MovieService {
 
     void deleteMovie(final String movieId);
 
-    List<Movie> getMoviesByUserId(final String userId);
+    Page<Movie> getMoviesByUserId(final String userId,  final int page, final int pageSize);
 
 }

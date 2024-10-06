@@ -1,10 +1,11 @@
 package com.movieapp.movieapp.movie;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -54,8 +55,9 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> getMoviesByUserId(final String userId) {
-        return movieRepository.getMoviesByUserId(userId);
+    public Page<Movie> getMoviesByUserId(final String userId, final int page, final int pageSize) {
+        PageRequest pageRequest = PageRequest.of(page, pageSize);
+        return movieRepository.findByUserId(userId, pageRequest);
     }
 
     @Override
