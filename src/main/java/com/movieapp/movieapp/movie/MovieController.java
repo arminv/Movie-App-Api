@@ -68,8 +68,11 @@ public class MovieController {
     public Page<MovieDto> getMoviesByUserId(
         @PathVariable final String userId,
         @RequestParam(defaultValue = "0") final int page,
-        @RequestParam(defaultValue = "30") final int pageSize) {
-        return movieService.getMoviesByUserId(userId, page, pageSize)
+        @RequestParam(defaultValue = "30") final int pageSize,
+        @RequestParam(defaultValue = "created") final String sortBy,
+        @RequestParam(defaultValue = "desc") final String sortDirection
+    ) {
+        return movieService.getMoviesByUserId(userId, page, pageSize, sortBy, sortDirection)
             .map(movieMapper::mapTo);
     }
 

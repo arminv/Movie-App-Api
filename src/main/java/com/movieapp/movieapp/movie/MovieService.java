@@ -8,6 +8,6 @@ public interface MovieService {
 
     void deleteMovie(final String movieId);
 
-    Page<Movie> getMoviesByUserId(final String userId,  final int page, final int pageSize);
+    Page<Movie> getMoviesByUserId(final String userId, final int page, final int pageSize, final String sortBy, final String sortDirection);
 
 }

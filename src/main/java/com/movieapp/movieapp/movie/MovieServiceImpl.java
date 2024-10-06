@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
@@ -55,8 +56,12 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Page<Movie> getMoviesByUserId(final String userId, final int page, final int pageSize) {
-        PageRequest pageRequest = PageRequest.of(page, pageSize);
+    public Page<Movie> getMoviesByUserId(final String userId, final int page, final int pageSize, final String sortBy, final String sortDirection) {
+        Sort sort = sortDirection.equalsIgnoreCase("desc")
+            ? Sort.by(sortBy).descending()
+            : Sort.by(sortBy).ascending();
+        PageRequest pageRequest = PageRequest.of(page, pageSize, sort);
+
         return movieRepository.findByUserId(userId, pageRequest);
     }
 
