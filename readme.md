@@ -11,5 +11,3 @@
 - Implement JWT-based auth flow
 - Implement authorization & role levels/types
 - Add tests (integration, unit)
-- Implement: `GET users/statistics` - number of liked movies, avg rating, last logged in date, etc.
-- 
