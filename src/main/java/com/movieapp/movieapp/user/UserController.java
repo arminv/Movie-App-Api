@@ -93,4 +93,18 @@ public class UserController {
         return userService.getUserInfo(principal);
     }
 
+    // TODO:
+    @Operation(
+        description = "Get misc. statistics for current user",
+        responses = {
+            @ApiResponse(responseCode = "200", description = "User successfully found"),
+            @ApiResponse(responseCode = "403", description = "Missing or invalid user")
+        }
+    )
+    @GetMapping("/statistics/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Map<String, Object> getUserStatistics(@PathVariable final String id) {
+        return userService.getUserStatistics(id);
+    }
+
 }

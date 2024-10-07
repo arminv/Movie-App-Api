@@ -2,23 +2,33 @@ package com.movieapp.movieapp.user;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import lombok.AllArgsConstructor;
+import com.movieapp.movieapp.movie.Movie;
+import com.movieapp.movieapp.movie.MovieService;
+
 import lombok.extern.java.Log;
 
 @Service
-@AllArgsConstructor
 @Log
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+
+    private final MovieService movieService;
+
+    public UserServiceImpl(final UserRepository userRepository, final MovieService movieService) {
+        this.userRepository = userRepository;
+        this.movieService = movieService;
+    }
 
     @Override
     public Optional<User> getUserById(final String userId) {
@@ -93,6 +103,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public Map<String, Object> getUserInfo(final @AuthenticationPrincipal OAuth2User principal) {
         return principal.getAttributes();
+    }
+
+    @Override
+    public Map<String, Object> getUserStatistics(final String userId) {
+        final List<Movie> userMovies = movieService.getAllMoviesByUserId(userId);
+        final OptionalDouble ratingAvg = userMovies.stream().mapToDouble(Movie::getRating).average();
+        final Optional<User> user = userRepository.findById(userId);
+
+        return Map.of(
+            "numberOfMovies", userMovies.size(),
+            "ratingAvg", ratingAvg.orElse(0),
+            "lastLoggedIn", user.get().getLastLoggedInOn()
+        );
     }
 
 }

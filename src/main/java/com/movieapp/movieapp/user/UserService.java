@@ -18,4 +18,6 @@ public interface UserService {
 
     Map<String, Object> getUserInfo(final @AuthenticationPrincipal OAuth2User principal);
 
+    Map<String, Object> getUserStatistics(final String userId);
+
 }

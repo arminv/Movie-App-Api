@@ -1,6 +1,7 @@
 package com.movieapp.movieapp.movie;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -63,6 +64,11 @@ public class MovieServiceImpl implements MovieService {
         PageRequest pageRequest = PageRequest.of(page, pageSize, sort);
 
         return movieRepository.findByUserId(userId, pageRequest);
+    }
+
+    @Override
+    public List<Movie> getAllMoviesByUserId(final String userId) {
+        return movieRepository.findByUserId(userId);
     }
 
     @Override
