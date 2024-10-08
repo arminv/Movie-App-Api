@@ -55,7 +55,6 @@ public class MovieController {
         }
     }
 
-    // TODO: support pagination and sorting
     @Operation(
         description = "Get the list of liked movies by user ID",
         responses = {

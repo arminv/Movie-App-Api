@@ -114,7 +114,7 @@ public class UserServiceImpl implements UserService {
         return Map.of(
             "numberOfMovies", userMovies.size(),
             "ratingAvg", ratingAvg.orElse(0),
-            "lastLoggedIn", user.get().getLastLoggedInOn()
+            "lastLoggedIn", user.stream().map(User::getLastLoggedInOn)
         );
     }
 
