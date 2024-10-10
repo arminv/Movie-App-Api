@@ -36,6 +36,7 @@ public class MovieServiceImpl implements MovieService {
                     .lastUpdated(LocalDateTime.now())
                     .rating(createUpdateMovieRequest.getRating() == 0f ? existingMovie.getRating() : createUpdateMovieRequest.getRating())
                     .review(Optional.ofNullable(createUpdateMovieRequest.getReview()).orElseGet(existingMovie::getReview))
+                    .dateWatched(Optional.ofNullable(createUpdateMovieRequest.getDateWatched()).orElseGet(existingMovie::getDateWatched))
                     .build();
 
                 return movieRepository.save(updatedMovie);
@@ -50,6 +51,7 @@ public class MovieServiceImpl implements MovieService {
                 .lastUpdated(now)
                 .rating(createUpdateMovieRequest.getRating())
                 .review(Optional.ofNullable(createUpdateMovieRequest.getReview()).orElse(""))
+                .dateWatched(createUpdateMovieRequest.getDateWatched())
                 .build();
 
             return movieRepository.save(newMovie);

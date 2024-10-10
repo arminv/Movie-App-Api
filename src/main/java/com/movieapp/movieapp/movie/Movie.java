@@ -76,4 +76,9 @@ public class Movie {
      */
     private String review;
 
+    /**
+     * Date user watched this movie
+     */
+    private LocalDateTime dateWatched;
+
 }

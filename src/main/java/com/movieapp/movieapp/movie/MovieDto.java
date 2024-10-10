@@ -54,4 +54,9 @@ public class MovieDto {
      */
     private String review;
 
+    /**
+     * Date user watched this movie
+     */
+    private LocalDateTime dateWatched;
+
 }
