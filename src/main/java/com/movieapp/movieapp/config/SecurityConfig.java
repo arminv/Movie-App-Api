@@ -15,10 +15,10 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final CustomOAuth2SuccessHandler customOAuth2SuccessHandler;
+
     @Value("${spring.profiles.active}")
     private String activeProfile;
-
-    private final CustomOAuth2SuccessHandler customOAuth2SuccessHandler;
 
     public SecurityConfig(CustomOAuth2SuccessHandler customOAuth2SuccessHandler) {
         this.customOAuth2SuccessHandler = customOAuth2SuccessHandler;

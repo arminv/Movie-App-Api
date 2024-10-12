@@ -13,7 +13,7 @@ public abstract class BaseMongoTest {
     @BeforeAll
     public static void setUp() {
         // Start the MongoDB container
-        mongoDBContainer = new MongoDBContainer("mongo:6.0");
+        mongoDBContainer = new MongoDBContainer("mongo:8.0");
         mongoDBContainer.start();
 
         // Set the system property to override the default MongoDB connection string
