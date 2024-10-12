@@ -2,6 +2,7 @@ package com.movieapp.movieapp;
 
 import java.time.LocalDateTime;
 
+import com.movieapp.movieapp.movie.Movie;
 import com.movieapp.movieapp.user.User;
 
 public final class TestDataUtil {
@@ -30,6 +31,22 @@ public final class TestDataUtil {
             .email("arminvarshokar+test456@gmail.com")
             .created(dateCreated)
             .lastUpdated(dateCreated)
+            .build();
+    }
+
+    public static Movie createTestMovieEntityA() {
+        final LocalDateTime dateCreated = LocalDateTime.parse("2020-01-07T11:21:12.103");
+
+        return Movie.builder()
+            .id("39vkjwlc02jfg9ejhv9evce")
+            .name("Harry Potter")
+            .userId("54hh849n9on7bu56uberf")
+            .movieDBId("29jh23iv92cjo")
+            .created(dateCreated)
+            .lastUpdated(dateCreated)
+            .dateWatched(dateCreated)
+            .rating(3.5f)
+            .review("Not a bad movie at all!")
             .build();
     }
 
