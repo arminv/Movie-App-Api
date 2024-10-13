@@ -78,12 +78,12 @@ public class MovieController {
     @Operation(
         description = "Delete a movie by ID",
         responses = {
-            @ApiResponse(responseCode = "200", description = "Movies successfully found"),
+            @ApiResponse(responseCode = "204", description = "Movie successfully deleted"),
             @ApiResponse(responseCode = "403", description = "Missing or invalid user")
         }
     )
     @DeleteMapping(path = "/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMovie(@PathVariable final String id) {
         movieService.deleteMovie(id);
     }

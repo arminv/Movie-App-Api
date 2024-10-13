@@ -118,4 +118,32 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
         );
     }
 
+    @Test
+    public void testThatDeleteExistingMovieReturnsHttpStatus204NoContent() throws Exception {
+        Movie testMovieEntityA = TestDataUtil.createTestMovieEntityA();
+        movieService.createUpdateMovie(
+            testMovieEntityA.getId(), CreateUpdateMovieRequest.builder()
+                .movieDBId(testMovieEntityA.getId())
+                .name(testMovieEntityA.getName())
+                .userId(testMovieEntityA.getUserId())
+                .rating(testMovieEntityA.getRating())
+                .review(testMovieEntityA.getReview())
+                .dateWatched(testMovieEntityA.getDateWatched())
+                .build()
+        );
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/movies/" + testMovieEntityA.getId())
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
+    @Test
+    public void testThatDeleteNonExistingMovieReturnsHttpStatus204NoContent() throws Exception {
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/movies/38fhe8du39fNonExisting")
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
 }
