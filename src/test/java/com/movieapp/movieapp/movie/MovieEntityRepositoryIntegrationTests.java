@@ -39,7 +39,7 @@ public class MovieEntityRepositoryIntegrationTests extends BaseMongoTest {
         Movie movieEntity = TestDataUtil.createTestMovieEntityA();
         movieRepository.save(movieEntity);
 
-        movieEntity.setName("UPDATED Movie 1AB32");
+        movieEntity.setName("UPDATED Movie 29fj29rj");
         movieEntity.setRating(4.5f);
         movieEntity.setDateWatched(LocalDateTime.parse("2019-02-01T17:15:12.102"));
         movieRepository.save(movieEntity);

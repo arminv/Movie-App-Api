@@ -50,7 +50,7 @@ public class SecurityConfig {
             );
 
         // Note: only for development:
-        if (Objects.equals(activeProfile, "dev")) {
+        if (Objects.equals(activeProfile, "dev") || Objects.equals(activeProfile, "test")) {
             http.csrf(AbstractHttpConfigurer::disable);
         }
 

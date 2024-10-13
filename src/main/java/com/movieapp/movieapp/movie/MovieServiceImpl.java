@@ -18,7 +18,7 @@ import lombok.extern.java.Log;
 @Log
 public class MovieServiceImpl implements MovieService {
 
-    MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     @Override
     public Movie createUpdateMovie(final String movieId, final CreateUpdateMovieRequest createUpdateMovieRequest) {

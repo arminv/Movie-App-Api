@@ -15,20 +15,17 @@ import org.springframework.stereotype.Service;
 import com.movieapp.movieapp.movie.Movie;
 import com.movieapp.movieapp.movie.MovieService;
 
+import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 
 @Service
+@AllArgsConstructor
 @Log
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
     private final MovieService movieService;
-
-    public UserServiceImpl(final UserRepository userRepository, final MovieService movieService) {
-        this.userRepository = userRepository;
-        this.movieService = movieService;
-    }
 
     @Override
     public Optional<User> getUserById(final String userId) {
