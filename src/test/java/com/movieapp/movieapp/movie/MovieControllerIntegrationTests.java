@@ -48,7 +48,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatUpdateMovieReturnsHttpStatus201Ok() throws Exception {
+    public void testThatUpdateMovieReturnsHttpStatus201Created() throws Exception {
         Movie testMovieEntityA = TestDataUtil.createTestMovieEntityA();
         Movie savedMovieEntity = movieService.createUpdateMovie(
             testMovieEntityA.getId(), CreateUpdateMovieRequest.builder()
@@ -120,20 +120,20 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
 
     @Test
     public void testThatDeleteExistingMovieReturnsHttpStatus204NoContent() throws Exception {
-        Movie testMovieEntityA = TestDataUtil.createTestMovieEntityA();
+        Movie testMovieEntityB = TestDataUtil.createTestMovieEntityB();
         movieService.createUpdateMovie(
-            testMovieEntityA.getId(), CreateUpdateMovieRequest.builder()
-                .movieDBId(testMovieEntityA.getId())
-                .name(testMovieEntityA.getName())
-                .userId(testMovieEntityA.getUserId())
-                .rating(testMovieEntityA.getRating())
-                .review(testMovieEntityA.getReview())
-                .dateWatched(testMovieEntityA.getDateWatched())
+            testMovieEntityB.getId(), CreateUpdateMovieRequest.builder()
+                .movieDBId(testMovieEntityB.getId())
+                .name(testMovieEntityB.getName())
+                .userId(testMovieEntityB.getUserId())
+                .rating(testMovieEntityB.getRating())
+                .review(testMovieEntityB.getReview())
+                .dateWatched(testMovieEntityB.getDateWatched())
                 .build()
         );
 
         mockMvc.perform(
-            MockMvcRequestBuilders.delete("/movies/" + testMovieEntityA.getId())
+            MockMvcRequestBuilders.delete("/movies/" + testMovieEntityB.getId())
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isNoContent());
     }
@@ -144,6 +144,29 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
             MockMvcRequestBuilders.delete("/movies/38fhe8du39fNonExisting")
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(MockMvcResultMatchers.status().isNoContent());
+    }
+
+    @Test
+    public void testThatGetMovieReturnsHttpStatus202AcceptedWhenUserHasMovies() throws Exception {
+        MovieDto testMovieC = TestDataUtil.createTestMovieDtoC();
+        objectMapper.writeValueAsString(testMovieC);
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/movies/users/" + testMovieC.getUserId())
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+            MockMvcResultMatchers.status().isAccepted()
+        );
+    }
+
+    @Test
+    public void testThatGetMovieReturnsHttpStatus202AcceptedWhenUserDoesNotHaveMovies() throws Exception {
+        mockMvc.perform(
+            MockMvcRequestBuilders.get("/movies/users/3945jv30vk3NonExisting")
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+            MockMvcResultMatchers.status().isAccepted()
+        );
     }
 
 }

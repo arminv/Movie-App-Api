@@ -41,6 +41,22 @@ public final class TestDataUtil {
             .build();
     }
 
+    public static Movie createTestMovieEntityB() {
+        final LocalDateTime dateCreated = LocalDateTime.parse("2020-01-07T11:21:12.103");
+
+        return Movie.builder()
+            .id("39vmwm39fjswivb33mvw0")
+            .name("Forrest Gump")
+            .userId(TEST_USER_ID)
+            .movieDBId("oo29dfcn330k-")
+            .created(dateCreated)
+            .lastUpdated(dateCreated)
+            .dateWatched(dateCreated)
+            .rating(4.5f)
+            .review("One of the best movies!")
+            .build();
+    }
+
     public static MovieDto createTestMovieDtoA() {
         final LocalDateTime dateCreated = LocalDateTime.parse("2017-03-01T10:10:10.100");
 
