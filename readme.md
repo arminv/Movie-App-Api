@@ -28,6 +28,9 @@ The following environment variables are needed:
 
 `http://localhost:8080/swagger-ui/index.html`
 
+![screencapture-localhost-8080-swagger-ui-index-html-2024-10-14-16_07_03](https://github.com/user-attachments/assets/4e946b6d-9c89-4844-b22e-a2d7f6dbad50)
+
+
 ## Mongo Express UI
 
 `http://localhost:8081/`
