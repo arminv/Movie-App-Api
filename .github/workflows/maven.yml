@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     env:
@@ -19,50 +18,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
-      #      - name: Start MongoDB in Docker
-      #        run: |
-      #          docker run -d --name mongodb -e MONGO_INITDB_ROOT_USERNAME=movieapp -e MONGO_INITDB_ROOT_PASSWORD='fnwM<Sj^%CDyc@' -p 27017:27017 mongo:latest
-      #
-      #      - name: Wait for MongoDB to start
-      #        run: |
-      #          echo "Waiting for MongoDB to start..."
-      #          for i in {1..10}; do
-      #            if docker exec mongodb mongo --username movieapp --password 'fnwM<Sj^%CDyc@' --authenticationDatabase 'admin' --eval "db.stats()" &> /dev/null; then
-      #              echo "MongoDB is running."
-      #              break
-      #            fi
-      #            echo "MongoDB is not running yet. Retrying in 10 seconds..."
-      #            sleep 10
-      #          done
-      #
-      #      - name: Create MongoDB User
-      #        run: |
-      #          docker exec mongodb mongo --username movieapp --password 'fnwM<Sj^%CDyc@' --authenticationDatabase 'admin' --eval 'db.createUser({
-      #            user: "movieapp",
-      #            pwd: "fnwM<Sj^%CDyc@",
-      #            roles: [{ role: "readWrite", db: "movieapp" }]
-      #          })'
-      #
-      #      - name: Set up MongoDB URI
-      #        run: echo "MONGO_URI=mongodb://movieapp:fnwM<Sj^%CDyc@@localhost:27017/movieapp" >> $GITHUB_ENV
-      #
-      #      - name: Check MongoDB connection
-      #        run: |
-      #          echo "Checking MongoDB connection..."
-      #          nc -zv localhost 27017
-
       - name: Set up JDK 23
         uses: actions/setup-java@v4
         with:
           java-version: '23'
           distribution: 'temurin'
           cache: maven
-
       - name: Build with Maven
         run: |
-         export ACTIVE_SPRING_PROFILE=prod;MONGO_URI=${{ secrets.MONGO_URI }}
-          mvn clean -B package --file pom.xml -e -X -DskipTests
-
+          export ACTIVE_SPRING_PROFILE=prod;MONGO_URI=${{ secrets.MONGO_URI }}
+           mvn clean -B package --file pom.xml -e -X -DskipTests
       - name: Maven dependency tree
         run: mvn dependency:tree
