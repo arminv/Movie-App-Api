@@ -25,7 +25,7 @@ jobs:
           mongodb-version: '8.0'
 
       - name: Set up MongoDB URI
-        run: echo "MONGO_URI=mongodb://localhost:27017/movieapp" >> $GITHUB_ENV
+        run: echo "MONGO_URI=mongodb://movieapp:fnwM<Sj^%CDyc@@localhost:27017/movieapp" >> $GITHUB_ENV
 
       - name: Check MongoDB connection
         run: |
