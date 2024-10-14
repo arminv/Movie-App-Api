@@ -32,17 +32,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y mongodb-org-shell
 
-      - name: Wait for MongoDB to start
-        run: |
-          echo "Waiting for MongoDB to start..."
-          for i in {1..10}; do
-            if docker ps | grep -q mongodb; then
-              echo "MongoDB container is running."
-              mongo --eval "db.stats()" && break
-            fi
-            echo "MongoDB is not running yet. Retrying in 10 seconds..."
-            sleep 10
-          done
+#      - name: Wait for MongoDB to start
+#        run: |
+#          echo "Waiting for MongoDB to start..."
+#          for i in {1..10}; do
+#            if docker ps | grep -q mongodb; then
+#              echo "MongoDB container is running."
+#              mongo --eval "db.stats()" && break
+#            fi
+#            echo "MongoDB is not running yet. Retrying in 10 seconds..."
+#            sleep 10
+#          done
 
       - name: Check MongoDB Status
         run: |
