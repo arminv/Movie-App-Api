@@ -21,7 +21,7 @@ jobs:
 
       - name: Start MongoDB in Docker
         run: |
-          docker run -d -p 27017:27017 --name mongodb -e MONGO_INITDB_ROOT_USERNAME=movieapp -e MONGO_INITDB_ROOT_PASSWORD=fnwM<Sj^%CDyc@ mongo:latest
+          docker run -d -p 27017:27017 --name mongodb -e MONGO_INITDB_ROOT_USERNAME="movieapp" -e MONGO_INITDB_ROOT_PASSWORD="fnwM<Sj^%CDyc@" mongo:latest
 
       - name: Install MongoDB Client
         run: |
