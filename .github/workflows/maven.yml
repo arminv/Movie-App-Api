@@ -10,10 +10,16 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    env:
+      GB_CLIENT_ID: ${{ secrets.GB_CLIENT_ID }}
+      GB_CLIENT_SECRET: ${{ secrets.GB_CLIENT_SECRET }}
+      ACTIVE_SPRING_PROFILE: ${{ secrets.ACTIVE_SPRING_PROFILE }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+
     services:
       mongo:
         image: mongo:latest
-#        options: --health-cmd="mongo --eval 'db.runCommand(\"ping\").ok' || exit 1" --health-interval=20s --health-timeout=5s --health-retries=5
+        #        options: --health-cmd="mongo --eval 'db.runCommand(\"ping\").ok' || exit 1" --health-interval=20s --health-timeout=5s --health-retries=5
         ports:
           - 27017:27017
 
