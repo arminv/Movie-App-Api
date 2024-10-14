@@ -42,7 +42,7 @@ public final class TestDataUtil {
     }
 
     public static Movie createTestMovieEntityB() {
-        final LocalDateTime dateCreated = LocalDateTime.parse("2020-01-07T11:21:12.103");
+        final LocalDateTime dateCreated = LocalDateTime.parse("2021-02-09T11:21:12.103");
 
         return Movie.builder()
             .id("39vmwm39fjswivb33mvw0")
@@ -58,7 +58,7 @@ public final class TestDataUtil {
     }
 
     public static MovieDto createTestMovieDtoA() {
-        final LocalDateTime dateCreated = LocalDateTime.parse("2017-03-01T10:10:10.100");
+        final LocalDateTime dateCreated = LocalDateTime.parse("2020-01-07T11:21:12.103");
 
         return MovieDto.builder()
             .id("39vkjwlc02jfg9ejhv9evce")
@@ -74,7 +74,7 @@ public final class TestDataUtil {
     }
 
     public static MovieDto createTestMovieDtoB() {
-        final LocalDateTime dateCreated = LocalDateTime.parse("2014-01-05T11:11:11.200");
+        final LocalDateTime dateCreated = LocalDateTime.parse("2021-02-09T11:21:12.103");
 
         return MovieDto.builder()
             .id("39vmwm39fjswivb33mvw0")

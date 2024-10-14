@@ -2,6 +2,7 @@ package com.movieapp.movieapp.exceptions;
 
 import lombok.NoArgsConstructor;
 
+//TODO:
 @NoArgsConstructor
 public class MovieappApplication extends RuntimeException {
 
