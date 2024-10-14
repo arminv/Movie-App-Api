@@ -1,9 +1,4 @@
 spring:
   data:
     mongodb:
-      host: localhost
-      port: 27017
-      database: movieapp
-      username: movieapp
-      password: fnwM<Sj^%CDyc@
-      auto-index-creation: true
+      uri: ${MONGO_URI}
