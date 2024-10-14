@@ -44,12 +44,12 @@ jobs:
 #            sleep 10
 #          done
 
-      - name: Check MongoDB Status
-        run: |
-          if ! mongo --eval "db.stats()" &> /dev/null; then
-            echo "MongoDB is not running."
-            exit 1
-          fi
+#      - name: Check MongoDB Status
+#        run: |
+#          if ! mongo --eval "db.stats()" &> /dev/null; then
+#            echo "MongoDB is not running."
+#            exit 1
+#          fi
 
       - name: Install MongoDB Tools
         run: |
