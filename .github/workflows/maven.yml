@@ -15,6 +15,7 @@ jobs:
       GB_CLIENT_ID: ${{ secrets.GB_CLIENT_ID }}
       GB_CLIENT_SECRET: ${{ secrets.GB_CLIENT_SECRET }}
       ACTIVE_SPRING_PROFILE: ${{ secrets.ACTIVE_SPRING_PROFILE }}
+      MONGO_URI: ${{ secrets.MONGO_URI }}
 
     steps:
       - uses: actions/checkout@v4
