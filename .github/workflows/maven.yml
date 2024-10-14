@@ -36,6 +36,13 @@ jobs:
       - name: Wait for MongoDB to start
         run: sleep 10  # Give MongoDB some time to start up
 
+      - name: Check MongoDB Status
+        run: |
+          if ! mongo --eval "db.stats()" &> /dev/null; then
+            echo "MongoDB is not running."
+            exit 1
+          fi
+
       - name: Create MongoDB User
         run: |
           mongo --eval 'db.createUser({
