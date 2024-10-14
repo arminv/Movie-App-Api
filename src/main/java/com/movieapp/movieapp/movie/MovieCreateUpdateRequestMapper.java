@@ -16,11 +16,19 @@ public class MovieCreateUpdateRequestMapper implements Mapper<CreateUpdateMovieR
 
     @Override
     public CreateUpdateMovieRequestDto mapTo(final CreateUpdateMovieRequest createUpdateMovieRequest) {
+        if (createUpdateMovieRequest == null) {
+            throw new NullPointerException("createUpdateMovieRequest is null");
+        }
+
         return modelMapper.map(createUpdateMovieRequest, CreateUpdateMovieRequestDto.class);
     }
 
     @Override
     public CreateUpdateMovieRequest mapFrom(final CreateUpdateMovieRequestDto createUpdateMovieRequestDto) {
+        if (createUpdateMovieRequestDto == null) {
+            throw new NullPointerException("createUpdateMovieRequestDto is null");
+        }
+
         return modelMapper.map(createUpdateMovieRequestDto, CreateUpdateMovieRequest.class);
     }
 

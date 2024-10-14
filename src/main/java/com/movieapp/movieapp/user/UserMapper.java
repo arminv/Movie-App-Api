@@ -16,11 +16,19 @@ public class UserMapper implements Mapper<User, UserDto> {
 
     @Override
     public UserDto mapTo(final User user) {
+        if (user == null) {
+            throw new NullPointerException("user is null");
+        }
+
         return modelMapper.map(user, UserDto.class);
     }
 
     @Override
     public User mapFrom(final UserDto userDto) {
+        if (userDto == null) {
+            throw new NullPointerException("userDto is null");
+        }
+
         return modelMapper.map(userDto, User.class);
     }
 

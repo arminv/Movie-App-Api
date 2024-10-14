@@ -16,11 +16,19 @@ public class UserCreateUpdateRequestMapper implements Mapper<CreateUpdateUserReq
 
     @Override
     public CreateUpdateUserRequestDto mapTo(final CreateUpdateUserRequest createUpdateUserRequest) {
+        if (createUpdateUserRequest == null) {
+            throw new NullPointerException("createUpdateUserRequest cannot be null");
+        }
+
         return modelMapper.map(createUpdateUserRequest, CreateUpdateUserRequestDto.class);
     }
 
     @Override
     public CreateUpdateUserRequest mapFrom(final CreateUpdateUserRequestDto createUpdateUserRequestDto) {
+        if (createUpdateUserRequestDto == null) {
+            throw new NullPointerException("createUpdateUserRequestDto cannot be null");
+        }
+
         return modelMapper.map(createUpdateUserRequestDto, CreateUpdateUserRequest.class);
     }
 

@@ -34,7 +34,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatCreateMovieReturnsHttpStatus201Created() throws Exception {
+    public void testCreateMovieReturnsHttpStatus201Created() throws Exception {
         MovieDto testMovieA = TestDataUtil.createTestMovieDtoA();
         String movieJson = objectMapper.writeValueAsString(testMovieA);
 
@@ -48,7 +48,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatUpdateMovieReturnsHttpStatus201Created() throws Exception {
+    public void testUpdateMovieReturnsHttpStatus201Created() throws Exception {
         Movie testMovieEntityA = TestDataUtil.createTestMovieEntityA();
         Movie savedMovieEntity = movieService.createUpdateMovie(
             testMovieEntityA.getId(), CreateUpdateMovieRequest.builder()
@@ -75,7 +75,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatCreateMovieReturnsCreatedMovie() throws Exception {
+    public void testCreateMovieReturnsCreatedMovie() throws Exception {
         MovieDto testMovieC = TestDataUtil.createTestMovieDtoC();
         String movieJson = objectMapper.writeValueAsString(testMovieC);
 
@@ -91,7 +91,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatUpdateMovieReturnsUpdatedMovie() throws Exception {
+    public void testUpdateMovieReturnsUpdatedMovie() throws Exception {
         Movie testMovieEntityA = TestDataUtil.createTestMovieEntityA();
         Movie savedMovieEntity = movieService.createUpdateMovie(
             testMovieEntityA.getId(), CreateUpdateMovieRequest.builder()
@@ -119,7 +119,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatDeleteExistingMovieReturnsHttpStatus204NoContent() throws Exception {
+    public void testDeleteExistingMovieReturnsHttpStatus204NoContent() throws Exception {
         Movie testMovieEntityB = TestDataUtil.createTestMovieEntityB();
         movieService.createUpdateMovie(
             testMovieEntityB.getId(), CreateUpdateMovieRequest.builder()
@@ -139,7 +139,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatDeleteNonExistingMovieReturnsHttpStatus204NoContent() throws Exception {
+    public void testDeleteNonExistingMovieReturnsHttpStatus204NoContent() throws Exception {
         mockMvc.perform(
             MockMvcRequestBuilders.delete("/movies/38fhe8du39fNonExisting")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -147,7 +147,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatGetMovieReturnsHttpStatus202AcceptedWhenUserHasMovies() throws Exception {
+    public void testGetMovieReturnsHttpStatus202AcceptedWhenUserHasMovies() throws Exception {
         MovieDto testMovieC = TestDataUtil.createTestMovieDtoC();
         objectMapper.writeValueAsString(testMovieC);
 
@@ -160,7 +160,7 @@ public class MovieControllerIntegrationTests extends BaseMongoTest {
     }
 
     @Test
-    public void testThatGetMovieReturnsHttpStatus202AcceptedWhenUserDoesNotHaveMovies() throws Exception {
+    public void testGetMovieReturnsHttpStatus202AcceptedWhenUserDoesNotHaveMovies() throws Exception {
         mockMvc.perform(
             MockMvcRequestBuilders.get("/movies/users/3945jv30vk3NonExisting")
                 .contentType(MediaType.APPLICATION_JSON)

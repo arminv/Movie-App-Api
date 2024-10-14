@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.movieapp.movieapp.TestDataUtil;
 import com.movieapp.movieapp.mappers.Mapper;
@@ -33,6 +34,18 @@ class MovieMapperTest {
         Movie result = this.movieMapper.mapFrom(movieDtoA);
 
         assertEquals(movieA, result);
+    }
+
+    @Test
+    public void testMapToThrowsWhenPassedNull() {
+        NullPointerException exp = assertThrows(NullPointerException.class, () -> this.movieMapper.mapTo(null));
+        assertEquals("movie is null", exp.getMessage());
+    }
+
+    @Test
+    public void testMapFromThrowsWhenPassedNull() {
+        NullPointerException exp = assertThrows(NullPointerException.class, () -> this.movieMapper.mapFrom(null));
+        assertEquals("movieDto is null", exp.getMessage());
     }
 
 }
