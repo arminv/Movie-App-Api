@@ -37,7 +37,7 @@ jobs:
 
       - name: Create MongoDB User
         run: |
-          docker exec -it mongodb mongo --username movieapp --password 'fnwM<Sj^%CDyc@' --authenticationDatabase 'admin' --eval 'db.createUser({
+          docker exec mongodb mongo --username movieapp --password 'fnwM<Sj^%CDyc@' --authenticationDatabase 'admin' --eval 'db.createUser({
             user: "movieapp",
             pwd: "fnwM<Sj^%CDyc@",
             roles: [{ role: "readWrite", db: "movieapp" }]
