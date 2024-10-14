@@ -19,10 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@1.8.0
-        with:
-          mongodb-version: '6.0'
+      - name: Start MongoDB in Docker
+        run: |
+          docker run -d -p 27017:27017 --name mongodb -e MONGO_INITDB_ROOT_USERNAME=movieapp -e MONGO_INITDB_ROOT_PASSWORD=fnwM<Sj^%CDyc@ mongo:latest
 
       - name: Install MongoDB Client
         run: |
@@ -37,9 +36,9 @@ jobs:
         run: |
           echo "Waiting for MongoDB to start..."
           for i in {1..10}; do
-            if mongo --eval "db.stats()" &> /dev/null; then
-              echo "MongoDB is running."
-              break
+            if docker ps | grep -q mongodb; then
+              echo "MongoDB container is running."
+              mongo --eval "db.stats()" && break
             fi
             echo "MongoDB is not running yet. Retrying in 10 seconds..."
             sleep 10
