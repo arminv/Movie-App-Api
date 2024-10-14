@@ -22,6 +22,7 @@ The following environment variables are needed:
 - `GB_CLIENT_ID=get-your-own`
 - `GB_CLIENT_SECRET=get-your-own`
 - `ACTIVE_SPRING_PROFILE=dev|test|prod`
+- `MONGO_URI=`
 
 ## Swagger UI
 
