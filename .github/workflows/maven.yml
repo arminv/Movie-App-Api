@@ -18,6 +18,10 @@ jobs:
           - 27017:27017
 
     steps:
+      - name: Set vm.max_map_count
+        run: |
+          sudo sysctl -w vm.max_map_count=1677720
+
       # Checkout the code from the repository
       - name: Checkout code
         uses: actions/checkout@v3
