@@ -19,8 +19,8 @@ Stack/tools include the following:
 
 The following environment variables are needed:
 
-- `GITHUB_CLIENT_ID=get-your-own`
-- `GITHUB_CLIENT_SECRET=get-your-own`
+- `GB_CLIENT_ID=get-your-own`
+- `GB_CLIENT_SECRET=get-your-own`
 - `ACTIVE_SPRING_PROFILE=dev|test|prod`
 
 ## Swagger UI
@@ -32,6 +32,7 @@ The following environment variables are needed:
 `http://localhost:8081/`
 
 ## Notes
+
 - Make sure Docker is up and running (needed for both server and integration tests).
 - Integration tests (that rely on Testcontainers) need to extend the `BaseMongoTest` abstract base class.
 

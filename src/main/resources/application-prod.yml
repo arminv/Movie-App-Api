@@ -1,8 +1,7 @@
 spring:
   data:
-    #    TODO:
     mongodb:
-      host:
+      host: localhost
       port: 27017
       database: movieapp
       username:

@@ -11,6 +11,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      GB_CLIENT_ID: ${{ secrets.GB_CLIENT_ID }}
+      GB_CLIENT_SECRET: ${{ secrets.GB_CLIENT_SECRET }}
+      ACTIVE_SPRING_PROFILE: ${{ secrets.ACTIVE_SPRING_PROFILE }}
+
     steps:
       - uses: actions/checkout@v4
 
