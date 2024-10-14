@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-#      - name: Start MongoDB in Docker
+      #      - name: Start MongoDB in Docker
       #        run: |
       #          docker run -d --name mongodb -e MONGO_INITDB_ROOT_USERNAME=movieapp -e MONGO_INITDB_ROOT_PASSWORD='fnwM<Sj^%CDyc@' -p 27017:27017 mongo:latest
       #
@@ -60,6 +60,11 @@ jobs:
           cache: maven
 
       - name: Build with Maven
+        env:
+          GB_CLIENT_ID: ${{ secrets.GB_CLIENT_ID }}
+          GB_CLIENT_SECRET: ${{ secrets.GB_CLIENT_SECRET }}
+          ACTIVE_SPRING_PROFILE: ${{ secrets.ACTIVE_SPRING_PROFILE }}
+          MONGO_URI: ${{ secrets.MONGO_URI }}
         run: mvn clean -B package --file pom.xml -e -X
 
       - name: Update dependency graph
