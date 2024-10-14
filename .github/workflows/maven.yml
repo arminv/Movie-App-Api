@@ -51,10 +51,10 @@ jobs:
 #            exit 1
 #          fi
 
-      - name: Install MongoDB Tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y mongodb-clients
+#      - name: Install MongoDB Tools
+      #        run: |
+      #          sudo apt-get update
+      #          sudo apt-get install -y mongodb-clients
 
       - name: Create MongoDB User
         run: |
