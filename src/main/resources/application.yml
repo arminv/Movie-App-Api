@@ -13,14 +13,14 @@ spring:
       database: movieapp
 
   # Local
-  #  data:
-  #    mongodb:
-  #      database: movieapp
-  #      host: localhost
-  #      port: 27017
-  #      username: movieapp
-  #      password: fnwM<Sj^%CDyc@
-  #      auto-index-creation: true
+#  data:
+#    mongodb:
+#      database: movieapp
+#      host: localhost
+#      port: 27017
+#      username: movieapp
+#      password: fnwM<Sj^%CDyc@
+#      auto-index-creation: true
 
   security:
     oauth2:
