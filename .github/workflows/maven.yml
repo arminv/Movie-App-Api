@@ -51,13 +51,18 @@ jobs:
             exit 1
           fi
 
-#      - name: Create MongoDB User
-#        run: |
-#          mongo --eval 'db.createUser({
-#            user: "movieapp",
-#            pwd: "fnwM<Sj^%CDyc@",
-#            roles: [{ role: "readWrite", db: "movieapp" }]
-#          })'
+      - name: Install MongoDB Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mongodb-clients
+
+      - name: Create MongoDB User
+        run: |
+          docker exec mongodb mongo --username movieapp --password 'fnwM<Sj^%CDyc@' --authenticationDatabase 'admin' --eval 'db.createUser({
+            user: "movieapp",
+            pwd: "fnwM<Sj^%CDyc@",
+            roles: [{ role: "readWrite", db: "movieapp" }]
+          })'
 
       - name: Set up MongoDB URI
         run: echo "MONGO_URI=mongodb://movieapp:fnwM<Sj^%CDyc@@localhost:27017/movieapp" >> $GITHUB_ENV
