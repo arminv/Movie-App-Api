@@ -2,6 +2,8 @@ package com.movieapp.movieapp;
 
 import java.time.LocalDateTime;
 
+import com.movieapp.movieapp.movie.CreateUpdateMovieRequest;
+import com.movieapp.movieapp.movie.CreateUpdateMovieRequestDto;
 import com.movieapp.movieapp.movie.Movie;
 import com.movieapp.movieapp.movie.MovieDto;
 import com.movieapp.movieapp.user.User;
@@ -102,6 +104,32 @@ public final class TestDataUtil {
             .dateWatched(dateCreated)
             .rating(4.0f)
             .review("Great series to watch.")
+            .build();
+    }
+
+    public static CreateUpdateMovieRequest createTestMovieRequestA() {
+        final LocalDateTime dateWatched = LocalDateTime.parse("2014-01-05T11:11:11.200");
+
+        return CreateUpdateMovieRequest.builder()
+            .name("Harry Potter")
+            .userId(TEST_USER_ID)
+            .movieDBId("29jh23iv92cjo")
+            .rating(3.5f)
+            .review("Not a bad movie at all!")
+            .dateWatched(dateWatched)
+            .build();
+    }
+
+    public static CreateUpdateMovieRequestDto createTestMovieRequestDtoA() {
+        final LocalDateTime dateWatched = LocalDateTime.parse("2014-01-05T11:11:11.200");
+
+        return CreateUpdateMovieRequestDto.builder()
+            .name("Harry Potter")
+            .userId(TEST_USER_ID)
+            .movieDBId("29jh23iv92cjo")
+            .rating(3.5f)
+            .review("Not a bad movie at all!")
+            .dateWatched(dateWatched)
             .build();
     }
 
