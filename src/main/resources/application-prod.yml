@@ -4,6 +4,6 @@ spring:
       host: localhost
       port: 27017
       database: movieapp
-      username:
-      password:
+      username: movieapp
+      password: fnwM<Sj^%CDyc@
       auto-index-creation: true
