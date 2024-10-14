@@ -34,7 +34,16 @@ jobs:
           sudo apt-get install -y mongodb-org-shell
 
       - name: Wait for MongoDB to start
-        run: sleep 10  # Give MongoDB some time to start up
+        run: |
+          echo "Waiting for MongoDB to start..."
+          for i in {1..10}; do
+            if mongo --eval "db.stats()" &> /dev/null; then
+              echo "MongoDB is running."
+              break
+            fi
+            echo "MongoDB is not running yet. Retrying in 10 seconds..."
+            sleep 10
+          done
 
       - name: Check MongoDB Status
         run: |
