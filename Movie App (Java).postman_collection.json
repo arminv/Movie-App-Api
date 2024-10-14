@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "c741c421-f96f-474e-b968-1a7c0c7b8e0f",
+		"name": "Movie App (Java)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15954674"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Armin 238328\",\n    \"email\": \"arminvarshokar+238328@yahoo.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Local Host Port}}/users/",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Armin 22\",\n    \"email\": \"arminvarshokar+22@yahoo.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Local Host Port}}/users/66f7bef57ae0367272cce0e9",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"users",
+								"66f7bef57ae0367272cce0e9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get (By ID)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Local Host Port}}/users/66f7bf257ae0367272cce0eb",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"users",
+								"66f7bf257ae0367272cce0eb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Local Host Port}}/users/statistics/66fa4187023cc26f39e97d0a",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"users",
+								"statistics",
+								"66fa4187023cc26f39e97d0a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"66f7bf257ae0367272cce0eb\",\n    \"movieDBId\": \"39fu92dj9i3jf0i\",\n    \"name\": \"Test Movie AV37gdk\",\n    \"rating\": 2.5,\n    \"review\": \"S!!!ome more comment here!\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Local Host Port}}/movies/",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"670cc6d4ced37b54d6354cd3\",\n    \"movieDBId\": \"328u32r83ufd93a\",\n    \"name\": \"Test Movie Here 2!\",\n    \"dateWatched\": \"2021-11-22T01:21:12.339773\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Local Host Port}}/movies/66f910406a435b31394a315c",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"movies",
+								"66f910406a435b31394a315c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{Local Host Port}}/movies/66f90348ed0ef141b86a00c8",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"movies",
+								"66f90348ed0ef141b86a00c8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get (By User ID)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Local Host Port}}/movies/users/670cc6d4ced37b54d6354cd3?page=0&pageSize=10&sortBy=rating&sortDirection=desc",
+							"host": [
+								"{{Local Host Port}}"
+							],
+							"path": [
+								"movies",
+								"users",
+								"670cc6d4ced37b54d6354cd3"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "pageSize",
+									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "rating"
+								},
+								{
+									"key": "sortDirection",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
