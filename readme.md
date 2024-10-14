@@ -19,10 +19,12 @@ Stack/tools include the following:
 
 The following environment variables are needed:
 
-- `ACTIVE_SPRING_PROFILE=test|dev|prod`
-- `MONGO_URI=get-your-own`
-- `GB_CLIENT_ID=get-your-own` (OAuth2)
-- `GB_CLIENT_SECRET=get-your-own` (OAuth2)
+```bash
+ACTIVE_SPRING_PROFILE=test|dev|prod
+MONGO_URI=get-your-own
+GB_CLIENT_ID=get-your-own (OAuth2)
+GB_CLIENT_SECRET=get-your-own (OAuth2)
+```
 
 ## Swagger UI
 
