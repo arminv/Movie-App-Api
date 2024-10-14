@@ -36,6 +36,9 @@ The following environment variables are needed:
 
 `http://localhost:8081/`
 
+![screencapture-localhost-8081-db-movieapp-2024-10-14-16_23_26](https://github.com/user-attachments/assets/c10deabb-4750-45c7-a975-a8873f15ac47)
+
+
 ## Tests
 
 - Make sure Docker is up and running.
