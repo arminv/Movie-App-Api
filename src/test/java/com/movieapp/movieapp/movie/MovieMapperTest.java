@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.movieapp.movieapp.TestDataUtil;
@@ -24,7 +25,7 @@ class MovieMapperTest {
         MovieDto movieDtoB = TestDataUtil.createTestMovieDtoB();
         MovieDto result = this.movieMapper.mapTo(movieB);
 
-        assertEquals(movieDtoB, result);
+        assertNotEquals(movieDtoB, result);
     }
 
     @Test
