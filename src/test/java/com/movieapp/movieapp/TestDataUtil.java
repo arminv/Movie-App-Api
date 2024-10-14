@@ -8,12 +8,12 @@ import com.movieapp.movieapp.movie.Movie;
 import com.movieapp.movieapp.movie.MovieDto;
 import com.movieapp.movieapp.user.User;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
 public final class TestDataUtil {
 
-    final static String TEST_USER_ID = "54hh849n9on7bu56uberf";
+    private TestDataUtil() {
+    }
+
+    public final static String TEST_USER_ID = "54hh849n9on7bu56uberf";
 
     public static User createTestUserEntityA() {
         final LocalDateTime dateCreated = LocalDateTime.parse("2024-10-11T18:34:14.406");
