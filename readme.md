@@ -30,14 +30,15 @@ The following environment variables are needed:
 
 ![screencapture-localhost-8080-swagger-ui-index-html-2024-10-14-16_07_03](https://github.com/user-attachments/assets/4e946b6d-9c89-4844-b22e-a2d7f6dbad50)
 
-
 ## Mongo Express UI
+
+- To run Mongo DB locally (via Docker), make sure Docker is up and running, then update `docker-compose.yaml` and `application.yml` files to uncomment sections for local setup.
 
 `http://localhost:8081/`
 
-## Notes
+## Tests
 
-- Make sure Docker is up and running (needed for both server and integration tests).
+- Make sure Docker is up and running.
 - Integration tests (that rely on Testcontainers) need to extend the `BaseMongoTest` abstract base class.
 
 ## TODO

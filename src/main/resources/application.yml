@@ -6,10 +6,16 @@ spring:
   application:
     name: movieapp
 
+  # Cloud:
   data:
     mongodb:
       uri: ${MONGO_URI}
       database: movieapp
+
+  # Local
+  #  data:
+  #    mongodb:
+  #      database: movieapp
   #      host: localhost
   #      port: 27017
   #      username: movieapp
