@@ -38,7 +38,7 @@ jobs:
             user: "movieapp",
             pwd: "fnwM<Sj^%CDyc@",
             roles: [{ role: "readWrite", db: "movieapp" }]
-          })' --authenticationDatabase "admin"
+          })'
 
       - name: Set up MongoDB URI
         run: echo "MONGO_URI=mongodb://movieapp:fnwM<Sj^%CDyc@@localhost:27017/movieapp" >> $GITHUB_ENV
