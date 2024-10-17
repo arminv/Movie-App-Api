@@ -7,6 +7,7 @@ import com.movieapp.movieapp.movie.CreateUpdateMovieRequestDto;
 import com.movieapp.movieapp.movie.Movie;
 import com.movieapp.movieapp.movie.MovieDto;
 import com.movieapp.movieapp.user.User;
+import com.movieapp.movieapp.user.UserDto;
 
 public final class TestDataUtil {
 
@@ -19,6 +20,18 @@ public final class TestDataUtil {
         final LocalDateTime dateCreated = LocalDateTime.parse("2024-10-11T18:34:14.406");
 
         return User.builder()
+            .id(TEST_USER_ID)
+            .name("Armin")
+            .email("arminvarshokar+test123@gmail.com")
+            .created(dateCreated)
+            .lastUpdated(dateCreated)
+            .build();
+    }
+
+    public static UserDto createTestUserDtoA() {
+        final LocalDateTime dateCreated = LocalDateTime.parse("2024-10-11T18:34:14.406");
+
+        return UserDto.builder()
             .id(TEST_USER_ID)
             .name("Armin")
             .email("arminvarshokar+test123@gmail.com")
